@@ -3,11 +3,7 @@ using namespace std;
 int chess[8][8];
 queue<int> q;
 int free[8];
-void bfs(int s){
-	q.push(s);
-void solve(){
-
-}
+void solve();
 int main () {
 	ios_base::sync_with_stdio(false);
 	cin.tie(NULL);
