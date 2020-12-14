@@ -6,8 +6,8 @@
 #define pii pair<int, int>
 #define pll pair<long long, long long>
 #define ll long long
-#define vector<pair<int, int>> vii
-#define vector<pair<long long, long long>> vll
+#define vii vector<pair<int, int>> 
+#define vll vector<pair<long long, long long>> 
 
 #define each(it,a) for(__typeof(a.begin()) it = a.begin(); it != a.end(); ++it)
 
@@ -19,5 +19,9 @@
 using namespace std;
 
 int main() {
+    ios_base::sync_with_stdio(false);
+    cin.tie(nullptr);
+    cout.tie(nullptr);
 
-
+    freopen("DEBUG.INP", "r", stdin);
+    freopen("DEBUG.OUT", "w", stdout);
