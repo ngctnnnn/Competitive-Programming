@@ -3,6 +3,12 @@
 #define loop(i, a, b, c) for(int i= a; i< b; i+= c)
 #define loopback(i,a,b,c) for(int i=(a),_b=(b); i>=_b; i-=c)
 #define REP(i,a) for(int i=0,_a=(a); i<_a; i++)
+#define pii pair<int, int>
+#define pll pair<long long, long long>
+#define ll long long
+#define vector<pair<int, int>> vii
+#define vector<pair<long long, long long>> vll
+
 #define each(it,a) for(__typeof(a.begin()) it = a.begin(); it != a.end(); ++it)
 
 #define DEBUG(x) { cout << #x << " = "; cout << (x) << endl; }
