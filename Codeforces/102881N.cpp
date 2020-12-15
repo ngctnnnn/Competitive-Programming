@@ -39,11 +39,12 @@ T bs(T a[], T l, T r, T x){
         if (a[mid] == x)
             return mid;
         if (a[mid] > x)
-            return bs(a, l, mid - 1, x);
-        return bs(a, mid + 1, r, x);
+            return (a, l, mid - 1, x);
+        return (a, mid + 1, r, x);
     }
     return -1;
 }
+
 using namespace std;
 int main() {
     ios_base::sync_with_stdio(false);
@@ -53,24 +54,15 @@ int main() {
     freopen("DEBUG.INP", "r", stdin);
     freopen("DEBUG.OUT", "w", stdout);
 
-    int m, n;
-    cin >> m >> n;
-
-    int a[m], b[n];
-    loop(i, 0, m, 1)
-        cin >> a[i];
-    loop(i, 0, n, 1)
-        cin >> b[i];
-
-    multiset<int> ans;
-    loop(i, 0, m, 1)
-        ans.insert(a[i]);
-    loop(i, 0, n, 1)
-        ans.insert(b[i]);
-    each(it, ans)
-        cout << *it << " ";
-    cout << endl;
-    
+    int n;
+    cin >> n;
+    while (n--){
+        int a, b, c;
+        cin >> a >> b >> c;
+        if (a == b || b == c || a == c)
+            cout << "YES" << endl;
+        else 
+            cout << "NO" << endl;
+    }
     return 0;
 }
-    
