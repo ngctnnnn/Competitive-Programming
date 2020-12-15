@@ -6,7 +6,7 @@
 #define pll pair<long long, long long>
 #define ll long long
 #define vii vector<pair<int, int>> 
-#define vll vector<pair<long long, long long>>
+#define vll vector<pair<long long, long long>> 
 #define each(it,a) for(__typeof(a.begin()) it = a.begin(); it != a.end(); ++it)
 #define DEBUG(x) { cout << #x << " = "; cout << (x) << endl; }
 #define PR(a,n) { cout << #a << " = "; loop(_,1,n) cout << a[_] << ' '; cout << endl; }
@@ -20,15 +20,9 @@ int main() {
 
     freopen("DEBUG.INP", "r", stdin);
     freopen("DEBUG.OUT", "w", stdout);
-    
-	int n;
-	cin >> n;
-	vector<int> a(n); 
-	int sum = 0;
-	for (int i = 0; i < n; ++i)
-		cin >> a[i];
-	loop(i, 0, n, 1)
-		sum += (a[i] & 1 ? a[i] : a[i] - 1);
-	cout << (sum & 1 ? sum : sum - 1) << endl;
-	return 0;
-}	
+
+    int a, b;
+    cin >> a >> b;
+    cout << (a * b) * 3 << endl;
+    return 0;
+}
