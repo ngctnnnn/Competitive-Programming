@@ -94,3 +94,32 @@ int main() {
     freopen("DEBUG.INP", "r", stdin);
     freopen("DEBUG.OUT", "w", stdout);
 
+    int t;
+    cin >> t;
+    while (t--){
+        int k, n;
+        cin >> n >> k;
+        int i = 0, cnt = 0;
+        while (i < n && cnt < n){
+            loopeach(i, 1, k+1){ 
+                cout << 'a';
+                cnt++;
+            }
+            if (cnt < n - 1 && cnt & 1){ 
+                cout << "cb";
+                cnt+=2;
+            }
+            else if (cnt < n - 1 && !(cnt & 1)){
+                cout << "bc";
+                cnt+=2;
+            }
+            else if (cnt < n){ 
+                cout << "b";
+                cnt++;
+            }
+            ++i;   
+        }
+        cout << endl;
+    }
+    return 0;
+}
