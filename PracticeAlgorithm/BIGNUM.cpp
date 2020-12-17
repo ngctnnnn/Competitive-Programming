@@ -13,7 +13,7 @@ string operator+ (string str1, string str2){
        		 str.push_back(sum % 10 + '0'); 
        		 carry = sum/10; 
    	 } 
-   	 for (int i = n1; i < n2; i++ { 
+   	 for (int i = n1; i < n2; i++) { 
        		 int sum = ((str2[i] - '0') + carry); 
        		 str.push_back(sum%10 + '0'); 
 		 carry = sum / 10; 
