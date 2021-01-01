@@ -96,30 +96,16 @@ int main() {
 
     int n;
     cin >> n;
-    int sum = 0;
-    int cnt1 = 0, cnt2 = 0;
-    if (n == 1){
-        cout << "NO" << endl;
-        return 0;
-    }
-    loopeach(_, 0, n){ 
+    int s1 = 0, s2 = 0;
+    loopeach(_, 0, n){
         int x;
         cin >> x;
-        sum+=(x/100);
-        if ((x/100)&1)
-            cnt1++;
+        if ((x/100) & 1)
+            s2++;
         else 
-            cnt2++;
+            s1++;
     }
-    if (sum & 1){
-        cout << "NO" << endl;
-    }
-    else {
-        if ((cnt1 & 1) && !(cnt2 & 1) )
-            cout << "NO" << endl;
-        else 
-            cout << "YES" << endl;
-    }
+    cout << (s1==0&&s1%2!=0||s2%2!=0 ? "NO" : "YES") << endl;
     return 0;
 }
     
