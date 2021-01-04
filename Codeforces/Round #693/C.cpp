@@ -94,3 +94,25 @@ int main() {
     freopen("DEBUG.INP", "r", stdin);
     freopen("DEBUG.OUT", "w", stdout);
 
+    int t; 
+    cin >> t;
+    while (t--){
+        int n, odd = 0, even = 0;
+        cin >> n;
+        loopeach(i, 0, n){
+            int x;
+            cin >> x;
+            if (x & 1) 
+                odd+=x;
+            else
+                even+=x;
+        }
+        if (odd > even) 
+            cout << "Bob" << endl;
+        else if (odd == even)
+            cout << "Tie" << endl;
+        else 
+            cout << "Alice" << endl;
+    }
+    return 0;
+}
