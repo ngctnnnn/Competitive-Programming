@@ -1,2 +1,2 @@
 # Code
-Where I code C++    
+Just some algorithm practice
