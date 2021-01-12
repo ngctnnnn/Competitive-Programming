@@ -11,7 +11,6 @@
 #define each(it,a) for(__typeof(a.begin()) it = a.begin(); it != a.end(); ++it)
 #define DEBUG(x) { cout << #x << " = "; cout << (x) << endl; }
 #define PR(a,n) {loop(_, 0,n, 1) cout << a[_] << ' '; cout << endl; }
-#define PR0(a,n) { cout << #a << " = "; REP(_,n) cout << a[_] << ' '; cout << endl; }
 #define sqr(x) ((x) * (x)) 
 #define ff first
 #define ss second 
@@ -25,23 +24,14 @@ int main() {
     freopen("DEBUG.INP", "r", stdin);
     freopen("DEBUG.OUT", "w", stdout);
 
-    long long n;
+    int n;
     cin >> n;
-    ll a[n], cnt = 0;
+    ll cnt = 0;
     loopeach(i, 0, n){
-        cin >> a[i];
-        if (!(a[i] % 2 == 1)){ 
-            cnt+= (a[i]/2);
-            a[i] = 0;
-        }
-        else{ 
-            cnt += (a[i]/2);
-            a[i] -= ceil(a[i]/2.0);
-        }
+        int x;
+        cin >> x;
+        cnt+=x;
     }
-    loopeach(i, 0, n - 1)
-        if ((a[i] == 1) && (a[i + 1] == 1))
-            cnt++;
-    cout << cnt << endl;
+    cout << (cnt>>1) << endl;
     return 0;
 }
