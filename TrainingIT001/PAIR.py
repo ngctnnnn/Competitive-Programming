@@ -1,2 +1,5 @@
-n = int(input())
-arr = list(map(int, input().split()))
+n, sum = int(input()), 0
+for _ in range(n):
+    x = int(input())
+    sum += x
+print(sum>>1)

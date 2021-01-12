@@ -24,14 +24,14 @@ int main() {
     freopen("DEBUG.INP", "r", stdin);
     freopen("DEBUG.OUT", "w", stdout);
 
-    long long n;
+    int n;
     cin >> n;
-    ll cnt = 0, odd = 0;
+    ll cnt = 0;
     loopeach(i, 0, n){
         int x;
         cin >> x;
         cnt+=x;
     }
-    cout << cnt/2 << endl;
+    cout << (cnt>>1) << endl;
     return 0;
 }
