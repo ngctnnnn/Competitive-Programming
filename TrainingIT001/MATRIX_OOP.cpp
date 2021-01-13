@@ -1,94 +1,95 @@
 #include <bits/stdc++.h>
 using namespace std;
-template<typename T> class Matrix{
+
+template<typename T> 
+class Matrix {
 private:
-    int row, col;
-    T **value;
+    T **p;
+    int m, n;
 public:
-    
-    Matrix(){
-        row = 1, col = 1;
-        value = new T *[row]; 
-        for (int i = 0; i < row; i++)
-            value[i] = new T[col];
+    Matrix(int row, int col) {
+        m = row;
+        n = col;
+        p = new T *[m];
+        for (int i = 0; i < m; i++)
+            p[i] = new T[n];
     }
 
-    Matrix(int m, int n){
-        row = m;
-        col = n;
-        value = new T *[row];
-        for (int i = 0; i < row; i++)
-            value[i] = new T[col];
-    }
-
-    //Copy constructor
-    Matrix(const Matrix &a){
-        row = a.row;
-        col = a.col;
-        for (T i = 0; i < a.row; ++i)
-            for (T j = 0; j < a.col; ++j)
-                this->value[i][j] = a.value[i][j];
-    }
-
-    //Destructor
-    ~Matrix(){
-        if (value == NULL)
-            return;
-        for (int i = 0; i < row; i++)
+    void Input() {
+        for (int i = 0; i < m; i++)
         {
-            delete [] value[i];
-            value[i] = NULL;
+            for (int j = 0; j < n; j++)
+            {
+                cin >> p[i][j];
+            }
         }
-        delete [] value;
-        value = NULL;
     }
 
-    //Input matrix
-    void Input();
-    void Output();
-    friend Matrix<T> operator+ (Matrix<T> b);
+    void Output() {
+        for (int i = 0; i < m; i++){ 
+            for (int j = 0; j < n; j++)
+                cout << p[i][j] << " ";
+            cout << endl;
+            }
+    }
 
+    Matrix<T> operator+(Matrix<T> m2)
+    {
+        Matrix<T> C(m, n);
+        for (int i = 0; i < m; i++)
+        {
+            for (int j = 0; j < n; j++)
+            {
+                C.p[i][j] = p[i][j] + m2.p[i][j];
+            }
+        }
+        return C;
+    }
+
+    Matrix<T> operator = (Matrix<T> eq)
+    {
+        m = eq.m;
+        n = eq.n;
+        p = eq.p;
+
+        return *this;
+    }
+
+    friend Matrix<T> operator*(Matrix<T> a,  Matrix<T> b){
+        Matrix<T> B(1, 1);
+        if (a.n == b.m)
+        {
+            Matrix<T> C(a.m, b.n);
+            for (int i = 0; i < a.m; i++)
+            {
+                for (int k = 0; k < b.n; k++)
+                {
+                    C.p[i][k] = 0;
+                    for (int j = 0; j < a.n; j++)
+                    {
+                        C.p[i][k] += a.p[i][j] * b.p[j][k];
+                    }
+                }
+            }
+            B = C;
+        }
+        return B;
+    }
 };
-//Input a matrix
-template<typename T>
-void Matrix<T>::Input(){
-    cin >> row >> col;
-    for (int i = 0; i < row; ++i)
-        for (int j = 0; j < col; ++j){ 
-            cin >> value[i][j];
-        }
-}
-
-//Print a matrix
-template<typename T>
-void Matrix<T>::Output(){
-    for (T i = 0; i < row; ++i){
-        for (T j = 0; j < col; ++j)
-            cout << value[i][j] << " ";
-        cout << endl;
-    }
-}
-
-//Sum 2 matrices
-template<typename T>
-Matrix<T> Matrix<T>::operator+ (Matrix<T> a, Matrix<T> b){
-    Matrix<T> ans(b.row, b.col);
-
-    for (T i = 0; i < b.row; ++i)
-        for (T j = 0; j < b.col; ++j)
-            ans.value[i][j] = value[i][j] + b.value[i][j];
-        
-    return ans;
-}
 
 int main () {
+    ios_base::sync_with_stdio(false);
+    cin.tie(nullptr);
+
     freopen("DEBUG.INP", "r", stdin);
     freopen("DEBUG.OUT", "w", stdout);
 
-    Matrix<int> a(2, 3), b(2, 3);
-    a.Input();
-    b.Input();
-    (a + b).Output();
+    Matrix<int> a(3, 3), b(3, 3);
+    cin >> a;
+    cin >> b;
+    Matrix<int> c(3, 3);
+    c = a + b;
+    c.Output();
     return 0;
 }
 
