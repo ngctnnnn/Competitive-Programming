@@ -1,2 +1,2 @@
-# Code
-Where I code C++    
+# Competitive Programming
+Just some algorithm practice
