@@ -1,5 +1,18 @@
  #include <bits/stdc++.h>
 using namespace std;
+template<typename T>
+T power(T x, T y){
+	if (!y)
+		return 1;
+	if (y == 1)
+		return x;
+	if (y & 1)
+		return power(x, y/2) * power(x, y/2) * x;
+	else
+	{
+		return power(x, y/2) * power(x, y/2);
+	}   
+}
 int main () {
 	ios_base::sync_with_stdio(false);
 	cin.tie(NULL); cout.tie(NULL);
@@ -14,5 +27,6 @@ int main () {
 		if (s[i] == '?')
 			cnt++;
 	cout << cnt << endl;
+	cout << power<long long>(cnt, 4) << endl;
 	return 0;
 }
