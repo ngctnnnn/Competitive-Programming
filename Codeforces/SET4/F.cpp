@@ -19,21 +19,25 @@
 #define ss second 
 #define oo 1e99
 using namespace std;
-int scs(int n){
-    int cnt = 0;
-    while (n > 0){
-        cnt++;
-        n/=10;
+void solve(int a[], int n){
+    int sum = 0, ans = 1e9, i = 0;
+    while (i < n){
+        sum += a[i];
+        loopeach(j, 0, n){
+            int check = 0;
+            while (check < sum){
+                check+=a[j++];
+            }
+            if (check == sum){
+                int temp = j - i;
+                ans = min(ans, temp);
+            }
+            else 
+                continue;
+        }
+        ++i;
     }
-    return cnt;
-}
-int sum(int n){
-    int sum = 0;
-    while (n > 0){
-        sum+= (n % 10);
-        n/=10;
-    }
-    return sum;
+    cout << ans << endl;
 }
 int main() {
     ios_base::sync_with_stdio(false);
@@ -43,21 +47,10 @@ int main() {
     freopen("DEBUG.INP", "r", stdin);
     freopen("DEBUG.OUT", "w", stdout);
 
-    readln(a, n);
-    int maxscs = 0, maxsum = 0;
-    loopeach(i, 0, n){
-        if (maxscs < scs(a[i])){
-            maxscs = scs(a[i]);
-            maxsum = sum(a[i]);
-        }
-        else if (maxscs == scs(a[i])){
-            maxsum = max(maxsum, sum(a[i]));
-        }
-    }
-    sort(a, a + n);
-    loopeach(i, 0, n){
-        if (maxscs == scs(a[i]) && maxsum == sum(a[i]))
-            cout << a[i] << " ";
+    read(t);
+    while (t--){
+        readln(a, n);
+        solve(a, n);
     }
     return 0;
 }
