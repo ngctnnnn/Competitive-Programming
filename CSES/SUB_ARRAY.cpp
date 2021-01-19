@@ -1,4 +1,4 @@
-#include <iostream>
+#include <bits/stdc++.h>
 #define loop(i, a, b, c) for(__typeof(a) i=(a), _b=(b), _c=(c); i<_b; i+=_c)
 #define loopeach(i, a, b) for(__typeof(a) i = (a), _b=(b); i <_b;++i)
 #define loopback(i,a,b,c) for(__typeof(a) i=(a),_b=(b), _c=(c); i>=_b; i-=_c)
@@ -17,6 +17,19 @@
 #define ss second 
 #define oo 1e99
 using namespace std;
+//Binary Search
+template<typename T>
+T bs(T a[], T l, T r, T x){
+    T mid = (l + r)/2;
+    if (r >= l){
+        if (a[mid] == x)
+            return mid;
+        if (a[mid] > x)
+            return bs(a, l, mid - 1, x);
+        return bs(a, mid + 1, r, x);
+    }
+    return -1;
+}
 int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(nullptr);
@@ -24,12 +37,20 @@ int main() {
 
     freopen("DEBUG.INP", "r", stdin);
     freopen("DEBUG.OUT", "w", stdout);
-    
-    readln(a, n);
-    int maxx = -oo;
+
+    read(n);
+    read(x);
+    int a[n];
     loopeach(i, 0, n)
-        maxx = max(maxx, a[i]);
+        cin >> a[i];
     
-    cout << maxx << endl;
+    sort(a, a + n);
+    int cnt = 0;
+    loopeach(i, 0, n - 1){
+        int find = x - a[i];
+        if (bs<int>(a, i + 1, n, find)!= -1)
+            cnt++;
+    }
+    cout << cnt << endl;
     return 0;
 }
