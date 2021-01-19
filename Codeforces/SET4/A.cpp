@@ -29,13 +29,18 @@ int main() {
 
     string s;
     cin >> s;
+
     int odd = 0, even = 0;
+
     loopeach(i, 0, s.length()){
         if ((s[i] - '0') & 1)
-            odd+=s[i] - '0';
+            odd += s[i] - '0';
         else 
-            even+=s[i] - '0';
+            even += s[i] - '0';
     }
+
     cout << (odd == even ? "YES" : "NO") << endl;
     return 0;
 }
+
+

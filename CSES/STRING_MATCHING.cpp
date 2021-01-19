@@ -1,4 +1,5 @@
-#include <iostream>
+
+#include <bits/stdc++.h>
 #define loop(i, a, b, c) for(__typeof(a) i=(a), _b=(b), _c=(c); i<_b; i+=_c)
 #define loopeach(i, a, b) for(__typeof(a) i = (a), _b=(b); i <_b;++i)
 #define loopback(i,a,b,c) for(__typeof(a) i=(a),_b=(b), _c=(c); i>=_b; i-=_c)
@@ -21,15 +22,23 @@ int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(nullptr);
     cout.tie(nullptr);
-
-    freopen("DEBUG.INP", "r", stdin);
-    freopen("DEBUG.OUT", "w", stdout);
-    
-    readln(a, n);
-    int maxx = -oo;
-    loopeach(i, 0, n)
-        maxx = max(maxx, a[i]);
-    
-    cout << maxx << endl;
+ 
+    // freopen("DEBUG.INP", "r", stdin);
+    // freopen("DEBUG.OUT", "w", stdout);
+ 
+    string s;
+    cin >> s;
+    string t;
+    cin >> t;
+    int cnt = 0;
+    loopeach(i, 0, s.length()){
+        string c = "";
+        loopeach(j, i, i + t.size())
+            c += s[j];
+        // cout << c << endl;
+        if (t == c)
+            cnt++;
+    }
+    cout << cnt << endl;
     return 0;
 }
