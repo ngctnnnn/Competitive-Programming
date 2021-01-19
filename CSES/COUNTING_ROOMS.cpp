@@ -17,6 +17,10 @@
 #define ss second 
 #define oo 1e99
 using namespace std;
+vector<int> visited;
+void dfs(){
+    
+}
 int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(nullptr);
@@ -34,13 +38,5 @@ int main() {
         loopeach(j, 1, m + 1)
             cin >> c[i][j];
 
-    for (int i = 1; i <= n; ++i)
-        for (int j = 1; j <= m; ++j){ 
-            if (c[i][j] =='.'){
-                cnt++;
-                break;
-            }
-    }
-    cout << cnt << endl;
     return 0;
 }
