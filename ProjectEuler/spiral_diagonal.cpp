@@ -1,6 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
-int size = 1001, mid = size/2+1;
+int size = 5, mid = size/2+1;
 int a[1002][1002];
 void init(){
 	//up-right diagonal
