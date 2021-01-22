@@ -42,7 +42,6 @@ int solve(int x){
     if (10 <= x && x <= 17)
         return (x % 9) * 10 + 9;
 
-
     
 }
 int main() {
