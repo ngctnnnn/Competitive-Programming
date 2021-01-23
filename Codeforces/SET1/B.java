@@ -1,5 +1,7 @@
 import java.util.*;
+
 public class B {
+
     public static void main(String[] args){
         int n;
         Scanner s = new Scanner(System.in);
