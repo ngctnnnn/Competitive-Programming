@@ -18,6 +18,19 @@
 #define oo 2147483647
 using namespace std;
 //Prime sieve
+const long long max_length = 1e7 + 9;
+bool prime_sieve[max_length]; 
+template<typename T>
+void sieve(T x){
+    prime_sieve[0] = 0;
+    prime_sieve[1] = 0;
+    loop(i, 2, x + 1, 1)
+        prime_sieve[i] = 1;
+    for (T i = 2; i * i<= x; ++i)
+        if (prime_sieve[i])
+            for (T j = i*i; j <= x; j +=i)
+                prime_sieve[j] = 0;
+}
 template<typename T>
 T power(T x, T y){
     if (!y)
