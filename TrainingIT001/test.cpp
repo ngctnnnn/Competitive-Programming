@@ -1,4 +1,4 @@
-#include <iostream>
+#include <bits/stdc++.h>
 #define loop(i, a, b, c) for(__typeof(a) i=(a), _b=(b), _c=(c); i<_b; i+=_c)
 #define loopeach(i, a, b) for(__typeof(a) i = (a), _b=(b); i <_b;++i)
 #define loopback(i,a,b,c) for(__typeof(a) i=(a),_b=(b), _c=(c); i>=_b; i-=_c)
@@ -15,21 +15,37 @@
 #define sqr(x) ((x) * (x)) 
 #define ff first
 #define ss second 
-#define oo 1e99
+#define oo 2147483647
 using namespace std;
+//Prime check O(sqrt(n)/2)
+template<typename T>
+bool prime(T x){
+    if (x == 2 || x == 3)
+        return 1;
+    if (x < 2 || !(x & 1))
+        return 0;
+    for (T i = 3; i*i <= x; i += 2)
+        if (x % i == 0)
+            return 0;
+    return 1;
+}
+void primesum(int &sum, int i, int n){
+    if (i > n)
+        return;
+        
+    primesum(sum+=(prime<int>(i) ? i : 0), ++i, n);
+}
 int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(nullptr);
     cout.tie(nullptr);
 
     freopen("DEBUG.INP", "r", stdin);
-    freopen("DEBUG.OUT", "w", stdout);
-    
-    readln(a, n);
-    int maxx = -oo;
-    loopeach(i, 0, n)
-        maxx = max(maxx, a[i]);
-    
-    cout << maxx << endl;
+    // freopen("DEBUG.OUT", "w", stdout);
+
+    read(n);
+    int sum = 0, i = 1;
+    primesum(sum, i, n);
+    cout << sum << endl;
     return 0;
 }
