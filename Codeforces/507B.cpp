@@ -17,31 +17,19 @@
 #define ss second 
 #define oo 2147483647
 using namespace std;
-bool cmp1(int a, int b){
-    return a <= b ? 1 : 0;
-}
 int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(nullptr);
     cout.tie(nullptr);
 
-    //freopen("DEBUG.INP", "r", stdin);
-    //freopen("DEBUG.OUT", "w", stdout);
+    freopen("DEBUG.INP", "r", stdin);
+    freopen("DEBUG.OUT", "w", stdout);
 
-    int n, m, k;
-    cin >> n >> m >> k;
+    long long r, x1, x2, y1, y2;
+    cin >> r >> x1 >> y1 >> x2 >> y2;
 
-    vector<int> a(n);
-    loopeach(i, 0, n) cin >> a[i];
-    int cnt = 0;
-    sort(a.begin(), a.end());
-    while (m--){
-        read(x);
-        if (*lower_bound(a.begin(), a.end(), x + k, cmp1) > *upper_bound(a.begin(), a.end(), x - k)){ 
-            cout << *lower_bound(a.begin(), a.end(), x + k, cmp1) << " > " << *upper_bound(a.begin(), a.end(), x - k) << endl;
-            cout << x << endl;
-        }
-    }
-    cout << cnt << endl;
+    long double length = sqrt(sqr(x2 - x1) + sqr(y2 - y1));
+    // cout << sqr(x2 - x1) << " " << sqr(y2 - y1) << endl;
+    cout << ceil((length / r)/2) << endl;
     return 0;
 }

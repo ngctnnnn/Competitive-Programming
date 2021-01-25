@@ -1,55 +1,33 @@
 #include <bits/stdc++.h>
+#define loop(i, a, b, c) for(__typeof(a) i=(a), _b=(b), _c=(c); i<_b; i+=_c)
+#define loopeach(i, a, b) for(__typeof(a) i = (a), _b=(b); i <_b;++i)
+#define loopback(i,a,b,c) for(__typeof(a) i=(a),_b=(b), _c=(c); i>=_b; i-=_c)
+#define pii pair<int, int>
+#define pll pair<long long, long long>
 #define ll long long
+#define read(n) int n; cin >> n
+#define readln(a,n) int n; cin >> n; int a[n]; loopeach(i, 0, n) cin >> a[i];
+#define vii vector<pair<int, int>> 
+#define vll vector<pair<long long, long long>> 
+#define each(it,a) for(__typeof(a.begin()) it = a.begin(); it != a.end(); ++it)
+#define DEBUG(x) { cout << #x << " = "; cout << (x) << endl; }
+#define PR(a,n) {loop(_, 0,n, 1) cout << a[_] << ' '; cout << endl; }
+#define sqr(x) ((x) * (x)) 
+#define ff first
+#define ss second 
+#define oo 2147483647
 using namespace std;
-ll n, x;
-ll a[200005];
-void quickSort(long long a[], long long l, long long r){
-	long long i = l, j = r;
-	long long piv = a[(l + r)/2];
+int main() {
+	ios_base::sync_with_stdio(false);
+	cin.tie(nullptr);
+	cout.tie(nullptr);
 
-	while (i <= j){
-		while (a[i] < piv) ++i;
-		while (a[j] > piv) --j;
+	int n, x;
+	cin >> n >> x;
+	vector<int> a(n);
+	loopeach(i, 0, n) cin >> a[i];
 
-		if (i <= j){
-			swap(a[i], a[j]);
-			++i;
-			--j;
-		}
+	sort(a.begin(), a.end());
+	for (int i = n - 1; i >= 0; --i){
+		
 	}
-	if (l < j) quickSort(a, l, j);
-	if (i < r) quickSort(a, i, r);
-}
-void solve(){
-	quickSort(a, 0, n - 1);
-	for (ll i = 0; i < n; ++i)
-		cout << a[i] << " ";
-	cout << endl;
-	
-	ll sum = 0, cnt = 1;
-	for (ll i = 0; i < n; ++i){			
-		if (sum + a[i] > x){
-			cnt++;
-			sum = a[i];
-		}
-		else 
-			sum += a[i];
-		cout << i + 1<< " :" << sum << endl;
-	}
-	cout << cnt << endl;
-}
-int main () {
-	ios::sync_with_stdio(false);
-	cin.tie(NULL);
-	cout.tie(NULL);
-
-	freopen("DEBUG.INP", "r", stdin);
-	freopen("DEBUG.OUT", "w", stdout);
-
-	scanf("%lld%lld", &n, &x);
-	for (ll i = 0; i < n; ++i)
-		scanf("%lld", &a[i]);
-
-	solve();
-	return 0;
-}
