@@ -1,8 +1,8 @@
 def solve(n):
     if n % 4 == 0:
-        print("YES")
+        print("Alice")
     else:
-        print("NO")
+        print("Bob")
 
 t = int(input())
 for _ in range(t):
