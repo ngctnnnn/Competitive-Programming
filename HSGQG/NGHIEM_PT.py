@@ -13,5 +13,4 @@ dp = [1 for _ in range(n + k + 2)]
 
 giaithua(dp, n + k + 1)
 
-print(chinhhop(dp, 2, 6))
-#print(chinhhop(dp, k - 1, n + k - 1))
+print(chinhhop(dp, k - 1, n + k - 1))
