@@ -25,11 +25,11 @@ int main() {
     for (int i = 0; i < s.length() - 1; ++i){
         if (s[i] != s[i + 1]){
             string temp = "";
+            temp+=s[i];
             int j = i, cnt = 0;
-            while (s[j] != s[j + 1] && j < s.length()){
+            while (s[j] != s[j + 1] && j < s.length() - 1){
                 cnt++;
-                temp += s[j];
-                ++j;
+                temp += s[++j];
             }
             i = j;
             if (maxx < cnt){
