@@ -14,26 +14,19 @@ int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(nullptr);
     cout.tie(nullptr);
-
-    freopen("DEBUG.INP", "r", stdin);
-    freopen("DEBUG.OUT", "w", stdout);
-
+    
     string s;
     cin >> s;
+
     int maxx = -oo;
-    string ans = "";
     for (int i = 0; i < s.length() - 1; ++i){
         if (s[i] != s[i + 1]){
-            string temp = "";
-            temp+=s[i];
             int j = i, cnt = 0;
             while (s[j] != s[j + 1] && j < s.length() - 1){
                 cnt++;
-                temp += s[++j];
             }
-            i = j;
+            i = j+1;
             if (maxx < cnt){
-                ans = temp;
                 maxx = cnt;
             }
         }
