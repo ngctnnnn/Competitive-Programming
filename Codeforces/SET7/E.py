@@ -1,4 +1,12 @@
-import math
 a, b, c = map(int, input().split())
-ans = (a + 1)/2 + (b + 1)/2 + (c + 1)/2
-print(max(math.floor((a + 1)/2) + math.floor((b + 1)/2) + math.floor((c + 1)/2), math.floor(ans)))
+arr = [0 for _ in range(a + b + c + 1)]
+for i in range(1, a + 1):
+    for j in range(1, b + 1):
+        for t in range(1, c + 1):
+            arr[i + j + t] += 1
+maxx, pos = -1e99, 0
+for i in range(1, a + b + c + 1):
+    if maxx < arr[i]:
+        maxx = arr[i]
+        pos = i 
+print(pos)
