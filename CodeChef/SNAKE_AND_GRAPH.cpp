@@ -29,40 +29,45 @@ inline void read(int a[], int n){
     for (int i = 0; i < n; ++i)
         cin >> a[i];
 }
-//Prime sieve
-const long long max_length = 1e7 + 9;
-bool prime_sieve[max_length]; 
-template<typename T>
-void sieve(T x){
-    prime_sieve[0] = 0;
-    prime_sieve[1] = 0;
-    for (T i = 2; i < x + 1; ++i)
-        prime_sieve[i] = 1;
-    for (T i = 2; i * i<= x; ++i)
-        if (prime_sieve[i])
-            for (T j = i*i; j <= x; j +=i)
-                prime_sieve[j] = 0;
+const int N = 100005;
+vector<int>  a[N];
+int visited[N], parent[N], cnt = 0;
+
+void visit(int u){
+    visited[u] = ++cnt;
+    for (int i = 0; i < a[u].size(); ++i){
+        int v = a[u][i];
+        if (v != parent[u])
+            if (!visited[u]){
+                parent[v] = u;
+                visit(v);
+            }
+    }
 }
+
 int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(nullptr);
     cout.tie(nullptr);
 
-    int n, m, cnt = 0, maxx = -oo;
-    read(n); read(m);
-    int a[n][m];
-    for (int i = 0; i < n; ++i)
-        for (int j = 0; j < m;++j){
-            read(a[i][j]);
-            maxx = max(maxx, a[i][j]);
-        }   
-    sieve<int>(maxx);
-    for (int i = 0; i < n; ++i)
-        for (int j = 0; j < m; ++j){
-            if (prime_sieve[a[i][j]])
-                cnt++;
+    int t;
+    read(t);
+    while (t--){
+        int n, m;
+        read(n, m);
+        for (int i = 1; i <= m; ++i){
+            int p, q;
+            read(p, q);
+            a[p].push_back(q);
+            a[q].push_back(p);
         }
-    cout << cnt << endl;
+        for (int i = 1; i <= n; ++i)
+            if (!visited[i])
+                visit(i);
+        for (int i = 1; i <= n; ++i)
+            cout << visited[i] << " ";
+        cout << endl;
+    }        
 
     return 0;
 }
