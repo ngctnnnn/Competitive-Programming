@@ -12,17 +12,14 @@ func SUMDIFFER(_r io.Reader, _w io.Writer) {
 	out := bufio.NewWriter(_w)
 	defer out.Flush()
 
-	var s byte
+	a := make(map[byte]int)
+
+	var s string
 	fmt.Fscan(in, &s)
-	set := make(map[byte]int)
-	for i := 0; i < len(s); i++ {
-		if val, ok := set[i]; ok {
-			set[s[i]]++
-		} else {
-			set[s[i]] = 0
-		}
+	for i := range s {
+		a[s[i]]++
 	}
-	print(set)
+	fmt.Fprint(out, len(a))
 }
 
 func main() { SUMDIFFER(os.Stdin, os.Stdout) }
