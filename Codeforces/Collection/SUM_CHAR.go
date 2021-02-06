@@ -19,9 +19,16 @@ func SUMCHAR(_r io.Reader, _w io.Writer) {
 	for i := range s {
 		a[s[i]]++
 	}
-	for key, value := range a {
-		fmt.Printf("%c %d\n", key, value)
+
+	maps := make([]byte, 0, len(s))
+	for m := range maps {
+		maps = append(maps, m)
 	}
+	sort.Strings(maps)
+	for _, m := range maps {
+		fmt.Println(a[m])
+	}
+
 }
 
 func main() { SUMCHAR(os.Stdin, os.Stdout) }
