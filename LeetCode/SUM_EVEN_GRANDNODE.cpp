@@ -19,7 +19,7 @@ public:
                     if (root->left->left != nullptr)
                         sum+=root->left->left->val;
                     if (root->left->right != nullptr)
-                       sum+=root->left->right->val;
+                       sum+=root->left->right->val; 
                 }
                 if (root->right != nullptr) { 
                     if (root->right->left != nullptr)
