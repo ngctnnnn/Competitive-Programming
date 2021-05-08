@@ -1,63 +1,59 @@
 #include <iostream>
-#include <algorithm>
 #include <vector>
+#include <algorithm>
+#include <fstream>
 #define ff first
 #define ss second
+#define pii pair<int, int>
+#define f(i, a, b, c) for (int i = a; i < b; i += c)
 using namespace std;
-bool cmp(pair<int, int> a, pair<int, int> b) {
+bool cmp(pii a, pii b){
     return a.ff < b.ff;
 }
 int main () {
     freopen("DEBUG.INP", "r", stdin);
-    freopen("DEBUG.OUT", "w", stdout);
+    // freopen("DEBUG.OUT", "w", stdout);
 
     int n, m, k;
     cin >> n >> m >> k;
 
     vector<char> a(n);
-    vector<pair<int, int>> b(n);
+    vector<pii> b(m);
 
-    for (int i = 0; i < n; ++i)
+    f(i, 0, n, 1) 
         cin >> a[i];
     
-    for (int i = 0; i < m; ++i){ 
+    f(i, 0, m, 1){ 
         cin >> b[i].ff;
         b[i].ss = i + 1;
     }
-    
-    vector<int> ans(n);
-    vector<int> copy(n);
-    
-    sort(b.begin(), b.end(), cmp);
-    int curr = 0;
-    for (int i = 0; i < n; ++i) {
-        bool match = false;
-        
+
+    vector<int> ans;
+    f(i, 0, n, 1)
         if (a[i] == 'E') {
+            int curr = 0;
             if (b[curr].ff < k) {
                 b[curr].ff++;
-                ans[i] = b[curr].ss;
+                ans.push_back(b[curr].ss);
+                continue;
             }
             else { 
                 sort(b.begin(), b.end(), cmp);
                 b[0].ff++;
-                ans[i] = b[0].ss;
+                ans.push_back(b[0].ss);
                 curr = 0;
+                continue;     
             }
         }
+
         else {
             sort(b.begin(), b.end(), cmp);
-            int pos = -1;
-            for (int j = 0; j < m; ++j) {
-                if (b[j].ff < k)
-                    pos = j;
-            }
-            b[pos].ff++;
-            ans[i] = b[pos].ss;
+            int curr = b.size() - 1;
+            while (b[curr].ff == k)
+                --curr;
+            b[curr].ff++;
+            ans.push_back(b[curr].ss);
         }
-    }
-    for (int i = 0; i < n; ++i)
-        cout << ans[i] << " ";
-    cout << endl;
+    f(i, 0, ans.size(), 1) cout << ans.at(i) << " "; cout << "\n";
     return 0;
 }
