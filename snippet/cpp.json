@@ -1,0 +1,15 @@
+{
+    "declare": {
+    "prefix": "declare",
+    "body": [
+      "#include <iostream>",
+      "using namespace std;",
+      "int main () {",
+      "    freopen(\"DEBUG.INP\", \"r\", stdin);",
+      "    freopen(\"DEBUG.OUT\", \"w\", stdout);",
+      "",
+      "}"
+    ],
+    "description": "declare"
+  }
+}
