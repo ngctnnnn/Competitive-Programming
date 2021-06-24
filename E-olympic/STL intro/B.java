@@ -6,7 +6,8 @@ public class B {
         while (x > 0){
             x-=1;
             int n = sc.nextInt();
-            System.out.printf("%d ", n > 0 ? n += 2 : n);
+            System.out.printf("%d ", n >= 0 ? n += 2 : n);
         }
+        sc.close();
     }
 }
