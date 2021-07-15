@@ -1,47 +1,49 @@
-#include <bits/stdc++.h>
-#define loop(i, a, b, c) for(__typeof(a) i=(a), _b=(b), _c=(c); i<_b; i+=_c)
-#define loopeach(i, a, b) for(__typeof(a) i = (a), _b=(b); i <_b;++i)
-#define loopback(i,a,b,c) for(__typeof(a) i=(a),_b=(b), _c=(c); i>=_b; i-=_c)
-#define pii pair<int, int>
-#define pll pair<long long, long long>
-#define ll long long
-#define read(n) int n; cin >> n
-#define readln(a,n) int n; cin >> n; int a[n]; loopeach(i, 0, n) cin >> a[i];
-#define vii vector<pair<int, int>> 
-#define vll vector<pair<long long, long long>> 
-#define each(it,a) for(__typeof(a.begin()) it = a.begin(); it != a.end(); ++it)
-#define DEBUG(x) { cout << #x << " = "; cout << (x) << endl; }
-#define PR(a,n) {loop(_, 0,n, 1) cout << a[_] << ' '; cout << endl; }
-#define sqr(x) ((x) * (x)) 
+#include <iostream>
+#include <vector>
+#include <algorithm>
 #define ff first
-#define ss second 
-#define oo 2147483647
+#define ss second
+#define oo 1e99
+#define f(i, a, b, c) for (int i = a; i < b; i +=c)
+#define fb(i, a, b, c) for (int i = a; i >= b; i -=c)
 using namespace std;
-bool cmp1(int a, int b){
-    return a <= b ? 1 : 0;
+const int MAXX = 1000000009;
+int bs(vector<pair<int, bool>> a, int l, int r, int x, int k){
+    if (r >= l){
+        int mid = (l + r)>>1;
+        if (x - k <= a[mid].ff && a[mid].ff <= x + k && a[mid].ss)
+            return mid;
+        if (x - k < a[mid].ff)
+            return bs(a, l, mid - 1, x, k);
+        return bs(a, mid + 1, r, x, k);
+    }
+    return -1;
 }
-int main() {
-    ios_base::sync_with_stdio(false);
-    cin.tie(nullptr);
-    cout.tie(nullptr);
-
-    //freopen("DEBUG.INP", "r", stdin);
-    //freopen("DEBUG.OUT", "w", stdout);
-
+int main () {
+    freopen("DEBUG.INP", "r", stdin);
+    freopen("DEBUG.OUT", "w", stdout);
+    
     int n, m, k;
     cin >> n >> m >> k;
-
-    vector<int> a(n);
-    loopeach(i, 0, n) cin >> a[i];
     int cnt = 0;
-    sort(a.begin(), a.end());
-    while (m--){
-        read(x);
-        if (*lower_bound(a.begin(), a.end(), x + k, cmp1) > *upper_bound(a.begin(), a.end(), x - k)){ 
-            cout << *lower_bound(a.begin(), a.end(), x + k, cmp1) << " > " << *upper_bound(a.begin(), a.end(), x - k) << endl;
-            cout << x << endl;
+    int a[n];
+    f(i, 0, n, 1) cin >> a[i];
+
+    vector<pair<int, bool>> b(m, {0, true});
+    f(i, 0, m, 1) cin >> b[i].ff;
+    sort(b.begin(), b.end());
+
+    f(i, 0, n, 1){ 
+        int x = a[i];
+        int pos = bs(b, 0, m, x, k);
+        cout << x << " " << b[pos].ff << endl;
+        if (b[pos].ss) {
+            cnt++;
+            b[pos].ss=0;
         }
     }
+    f(i, 0, m, 1) cout << b[i].ff << " ";
+    cout << endl;
     cout << cnt << endl;
     return 0;
 }
